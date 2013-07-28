@@ -13,7 +13,7 @@
     <?php echo Asset::less('template.less'); ?>
     <!-- scripts -->
     <?php echo Asset::js('modernizr-2.6.2-respond-1.1.0.min.js'); ?>
-    <?php echo Asset::js('jquery-1.10.1.min.js'); ?>
+    <?php echo Asset::js('jquery.min.js'); ?>
     <?php echo Asset::js('bootstrap.min.js'); ?>
     <?php echo Asset::js('template.js'); ?>
 </head>
