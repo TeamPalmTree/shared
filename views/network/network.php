@@ -13,7 +13,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">PROJECTS</b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">GDM Radio</a></li>
+                            <li><a href="http://www.gdmradio.com">GDM Radio</a></li>
                         </ul>
                     </li>
                 </ul>
