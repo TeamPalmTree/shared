@@ -10,5 +10,6 @@ Asset::instance()->add_path(DOCROOT.'assets/shared/css', 'css');
 
 Autoloader::add_classes(array(
     'Controller_Shared'   => __DIR__.'/classes/controller/shared.php',
+    'Controller_TPT'   => __DIR__.'/classes/controller/tpt.php',
     'Helper'   => __DIR__.'/classes/helper.php',
 ));

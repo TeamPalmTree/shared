@@ -1,8 +1,8 @@
 <?php
 
-class Controller_TeamPalmTree extends Controller_Shared
+class Controller_TPT extends Controller_Shared
 {
-    public $template = 'teampalmtree';
+    public $template = 'tpt';
 
     public function router($method, $params)
     {
