@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="tpt_navigation-emblem" href="#"></a>
+            <a class="tpt-navigation-emblem" href="#"></a>
             <a class="brand" href="http://www.teampalmtree.com">Team Palm Tree</a>
             <div id="network-collapse" class="nav-collapse collapse">
                 <ul class="nav">

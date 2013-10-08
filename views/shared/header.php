@@ -1,6 +1,7 @@
-<div class="tpt_header">
+<div class="tpt-header">
     <div class="container">
-        <div class="tpt_header-logo">
+        <div class="tpt-header-logo">
         </div>
+        <?php echo $content; ?>
     </div>
 </div>

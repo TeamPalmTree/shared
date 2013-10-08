@@ -9,6 +9,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="http://example.com/image.png" />
     <!-- less -->
     <?php echo Asset::less('template.less'); ?>
     <!-- scripts -->
@@ -20,15 +21,12 @@
 <body>
 
 <?php echo $network; ?>
-
 <?php echo $header; ?>
 
 <div class="container">
 
     <?php echo $navigation; ?>
-
     <?php echo $content; ?>
-
     <?php echo $footer; ?>
 
 </div>
