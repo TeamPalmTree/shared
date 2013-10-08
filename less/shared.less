@@ -11,6 +11,10 @@
   border-radius: 0;
 }
 
+/////////////////////
+// DROP-DOWN MENUS //
+/////////////////////
+
 ul.nav li.dropdown:hover ul.dropdown-menu{
   display: block;
 }
@@ -46,7 +50,6 @@ a.menu:after, .dropdown-toggle:after {
   height: 150px;
   background-position: left bottom;
   background-size: cover;
-  background-repeat: no-repeat;
   padding-left: 30px;
   padding-top: 4px;
   overflow: hidden;
@@ -59,7 +62,6 @@ a.menu:after, .dropdown-toggle:after {
   background-image: url('../../../assets/img/logo.png');
   width: 600px;
   height: 149px;
-  background-repeat: no-repeat;
 }
 
 // tablet to desktop
@@ -108,6 +110,39 @@ a.menu:after, .dropdown-toggle:after {
     background-image: url('../../../assets/img/logo-tiny.png');
     width: 235px;
     height: 58px;
+  }
+
+}
+
+//////////////
+// CAROUSEL //
+//////////////
+
+.tpt-carousel img {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.tpt-carousel .carousel-caption {
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+// phone
+@media (max-width: 480px) {
+
+  .tpt-carousel img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .tpt-carousel .carousel-caption {
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
   }
 
 }
