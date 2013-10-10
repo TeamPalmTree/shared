@@ -6,7 +6,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>
+        <?php if (!isset($title)): ?>
+            <?php echo $site; ?>
+        <?php else: ?>
+            <?php echo $site . ' : ' . $title; ?>
+        <?php endif; ?>
+    </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- less -->
@@ -17,6 +23,7 @@
     <?php echo Asset::js('jquery-ui.min.js'); ?>
     <?php echo Asset::js('bootstrap.min.js'); ?>
     <?php echo Asset::js('knockout.js'); ?>
+    <?php echo Asset::js('knockout.mapping.js'); ?>
     <?php echo Asset::js('template.js'); ?>
 </head>
 <body>

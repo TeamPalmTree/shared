@@ -11,7 +11,7 @@
             <div id="network-collapse" class="nav-collapse collapse">
                 <ul class="nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">PROJECTS</b></a>
+                        <a href="#" class="dropdown-toggle">PROJECTS</a>
                         <ul class="dropdown-menu">
                             <li><a href="http://www.gdmradio.com">GDM Radio</a></li>
                             <li><a href="https://github.com/TeamPalmTree/cloudcast-full">CloudCast</a></li>

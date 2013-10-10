@@ -2,7 +2,9 @@
 
 class Controller_TPT extends Controller_Shared
 {
-    public $template = 'tpt';
+
+    public $site = 'TPT';
+    public $template = 'TPT';
 
     public function router($method, $params)
     {
