@@ -15,6 +15,7 @@
     </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/vnd.Microsoft.icon" href="/assets/img/icon.ico" />
     <!-- less -->
     <?php echo Asset::less('template.less'); ?>
     <!-- scripts -->
