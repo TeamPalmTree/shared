@@ -17,6 +17,11 @@
                             <li><a href="https://github.com/TeamPalmTree/cloudcast-full">CloudCast</a></li>
                         </ul>
                     </li>
+                    <?php if (Auth::check()): ?>
+                        <li><a href="#">LOGGED IN: <?php echo Auth::get_screen_name(); ?></a></li>
+                    <?php else: ?>
+                        <li><a href="http://authority.teampalmtree.com/authority/login/facebook?callback_url=<?php echo urlencode('http://www.gdmradio.com/promoter/login/'); ?>&redirect_url=<?php echo urlencode('http://www.gdmradio.com'); ?>">LOGIN FACEBOOK</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
