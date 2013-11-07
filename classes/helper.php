@@ -7,6 +7,7 @@ class Helper {
     public static $server_pattern = 'Y-m-d H:i:s';
     public static $user_pattern = 'Y-m-d H:i';
     public static $timeday_pattern = 'H:i D';
+    public static $DST_pattern = 'I';
 
     public static function extract_values($property, $objects)
     {
@@ -59,6 +60,25 @@ class Helper {
         $server_datetime->setTimezone(self::$user_timezone);
         $user_datetime_string = $server_datetime->format(self::$user_pattern);
         return $user_datetime_string;
+    }
+
+    public static function DST_hours_offset($datetime, $server_datetime)
+    {
+        $user_datetime = clone $datetime;
+        // convert datetime to user time
+        $user_datetime->setTimezone(self::$user_timezone);
+        // get user/server dst
+        $user_DST = (int)$user_datetime->format(self::$DST_pattern);
+        $server_DST = (int)$server_datetime->format(self::$DST_pattern);
+        // if same DST, no offset
+        if ($user_DST == $server_DST)
+            return 0;
+        // if currently DST, user non-DST
+        if ($server_DST > $user_DST)
+            return -1;
+        // if current non-DST, user DST
+        if ($server_DST < $user_DST)
+            return 1;
     }
 
     public static function server_datetime_to_user_timeday($server_datetime)
@@ -263,6 +283,11 @@ class Helper {
                 . str_pad($seconds, 2, '0', STR_PAD_LEFT);
         }
 
+    }
+
+    public static function crossed_durations_seconds($durations_count, $transition_seconds, $transition_fade_seconds)
+    {
+        return ($durations_count - 1) * (($transition_fade_seconds * 2) - $transition_seconds);
     }
 
 }
