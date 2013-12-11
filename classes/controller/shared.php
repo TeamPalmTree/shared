@@ -19,4 +19,8 @@ class Controller_Shared extends Controller_Hybrid
 
     }
 
+    public function errors_response($errors) {
+        return $this->response($errors)->set_header('errors', true);
+    }
+
 }

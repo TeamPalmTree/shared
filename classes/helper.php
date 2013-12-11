@@ -62,6 +62,17 @@ class Helper {
         return $user_datetime_string;
     }
 
+    public static function timestamp_to_user_datetime_string($timestamp)
+    {
+        if ($timestamp == null)
+            return null;
+        $server_datetime = new DateTime();
+        $server_datetime->setTimestamp($timestamp);
+        $server_datetime->setTimezone(self::$user_timezone);
+        $user_datetime_string = $server_datetime->format(self::$user_pattern);
+        return $user_datetime_string;
+    }
+
     public static function DST_hours_offset($datetime, $server_datetime)
     {
         $user_datetime = clone $datetime;
@@ -261,33 +272,119 @@ class Helper {
 
     }
 
-    public static function normalized_duration($duration)
+    public static function calculate_duration($hours, $minutes, $seconds)
+    {
+        $minutes += floor($seconds / 60);
+        $hours += floor($minutes / 60);
+        $minutes = $minutes % 60;
+        $seconds = $seconds % 60;
+        return str_pad($hours, 2, '0', STR_PAD_LEFT) . ':'
+            . str_pad($minutes, 2, '0', STR_PAD_LEFT) . ':'
+            . str_pad($seconds, 2, '0', STR_PAD_LEFT);
+    }
+
+    public static function normalize_duration($duration)
     {
 
+        // split duration parts
         $duration_parts = explode(':', $duration);
-        if (count($duration_parts) == 3)
+        // get duration parts count
+        $duration_parts_count = count($duration_parts);
+
+        $hours = 0;
+        $minutes = 0;
+        $seconds = 0;
+        // normalize duration based on provided input
+        if ($duration_parts_count == 3)
         {
             $hours = $duration_parts[0];
             $minutes = $duration_parts[1];
             $seconds = $duration_parts[2];
-            return str_pad($hours, 2, '0', STR_PAD_LEFT) . ':'
-                . str_pad($minutes, 2, '0', STR_PAD_LEFT) . ':'
-                . str_pad($seconds, 2, '0', STR_PAD_LEFT);
         }
-        else
+        else if ($duration_parts_count == 2)
         {
             $minutes = (int)$duration_parts[0];
             $seconds = (int)$duration_parts[1];
-            return '00:'
-                . str_pad($minutes, 2, '0', STR_PAD_LEFT) . ':'
-                . str_pad($seconds, 2, '0', STR_PAD_LEFT);
         }
+        else if ($duration_parts_count == 1)
+        {
+            $seconds = (int)$duration_parts[0];
+        }
+
+        // now recalculate the duration
+        return self::calculate_duration($hours, $minutes, $seconds);
 
     }
 
     public static function crossed_durations_seconds($durations_count, $transition_seconds, $transition_fade_seconds)
     {
         return ($durations_count - 1) * (($transition_fade_seconds * 2) - $transition_seconds);
+    }
+
+    public static function shuffle_assoc(&$list)
+    {
+        $keys = array_keys($list);
+        shuffle($keys);
+        $random = array();
+        foreach ($keys as $key)
+            $random[$key] = $list[$key];
+        $list = $random;
+    }
+
+    public static function mergesort(&$array, $cmp_function = 'strcmp')
+    {
+        // Arrays of size < 2 require no action.
+        if (count($array) < 2) return;
+        // Split the array in half
+        $halfway = count($array) / 2;
+        $array1 = array_slice($array, 0, $halfway);
+        $array2 = array_slice($array, $halfway);
+        // Recurse to sort the two halves
+        self::mergesort($array1, $cmp_function);
+        self::mergesort($array2, $cmp_function);
+        // If all of $array1 is <= all of $array2, just append them.
+        if (call_user_func($cmp_function, end($array1), $array2[0]) < 1) {
+            $array = array_merge($array1, $array2);
+            return;
+        }
+        // Merge the two sorted arrays into a single sorted array
+        $array = array();
+        $ptr1 = $ptr2 = 0;
+        while ($ptr1 < count($array1) && $ptr2 < count($array2)) {
+            if (call_user_func($cmp_function, $array1[$ptr1], $array2[$ptr2]) < 1) {
+                $array[] = $array1[$ptr1++];
+            }
+            else {
+                $array[] = $array2[$ptr2++];
+            }
+        }
+        // Merge the remainder
+        while ($ptr1 < count($array1)) $array[] = $array1[$ptr1++];
+        while ($ptr2 < count($array2)) $array[] = $array2[$ptr2++];
+        return;
+    }
+
+    public static function errors($validation) {
+        $out_errors = array();
+        foreach ($validation->error() as $field => $error)
+            $out_errors[$field] = $error->get_message();
+        return $out_errors;
+    }
+
+    public static function sanitize_file_title($title, $default_if_empty = 'default', $separator = ' ', $lower_case = false)
+    {
+        // removes accents
+        $title = @iconv('UTF-8', 'us-ascii//TRANSLIT', $title);
+        // removes all characters that are not separators, letters, numbers, dots or whitespaces
+        $title = preg_replace("/[^ a-zA-Z". preg_quote($separator). "\d\.\s\-\(\)\[\]]/", '', $lower_case ? strtolower($title) : $title);
+        // replaces all successive separators into a single one
+        $title = preg_replace('!['. preg_quote($separator).'\s]+!u', $separator, $title);
+        // trim beginning and ending seperators
+        $title = trim($title, $separator);
+        // if empty use the default string
+        if (empty($title))
+            $title = $default_if_empty;
+        return $title;
     }
 
 }
