@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Shared extends Controller_Hybrid
+class Controller_Base extends Controller_Hybrid
 {
     public $section;
 
