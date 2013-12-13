@@ -9,8 +9,8 @@ Asset::instance()->add_path(DOCROOT.'assets/shared/img', 'img');
 Asset::instance()->add_path(DOCROOT.'assets/shared/css', 'css');
 
 Autoloader::add_classes(array(
-    'Controller_Shared'   => __DIR__.'/classes/controller/shared.php',
-    'Controller_TPT'   => __DIR__.'/classes/controller/tpt.php',
+    'Controller_Base'   => __DIR__.'/classes/controller/base.php',
+    'Controller_Standard'   => __DIR__.'/classes/controller/standard.php',
     'Helper'   => __DIR__.'/classes/helper.php',
     'MixingWheel'   => __DIR__.'/classes/mixingwheel.php',
     'Validation'   => __DIR__.'/classes/validation.php',

@@ -1,10 +1,9 @@
 <?php
 
-class Controller_TPT extends Controller_Shared
+class Controller_Standard extends Controller_Base
 {
 
     public $site = 'TPT';
-    public $template = 'TPT';
 
     public function router($method, $params)
     {
@@ -17,12 +16,11 @@ class Controller_TPT extends Controller_Shared
         // set up the template for the UI
         if (!$this->is_restful())
         {
-            $this->template->network = View::forge('shared/network');
-            $this->template->header = View::forge('shared/header');
-            $this->template->footer = View::forge('shared/footer');
+            $this->template->modal = View::forge('standard/modal');
+            $this->template->section = View::forge('standard/section');
         }
 
-        // forward to FPHP router
+        // forward to parent router
         parent::router($method, $params);
 
     }
