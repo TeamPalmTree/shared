@@ -1,0 +1,48 @@
+.standard-sidebar {
+  position: absolute;
+  right: 0px;
+  width: 209px;
+  height: 100%;
+  background-color: @standard-accent-dark;
+  border-left: 1px solid @standard-bg-light;
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+}
+
+.standard-sidebar-inner {
+  height: 100%;
+  overflow: auto;
+  padding-right: @padding-base-vertical * 2;
+  padding-left: @padding-base-vertical * 2;
+  padding-top: @padding-base-vertical * 2;
+  padding-bottom: @padding-base-vertical * 2;
+}
+
+.standard-sidebar-toolbar {
+  position: relative;
+  flex: none;
+}
+
+.standard-sidebar-toolbar .navbar-nav {
+  float: left !important;
+  margin: 0px;
+}
+
+.standard-sidebar-toolbar .navbar-right {
+  float: right !important;
+  margin: 0px;
+}
+
+.standard-sidebar-toolbar textarea {
+  box-sizing: border-box;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.standard-sidebar-content {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+}
