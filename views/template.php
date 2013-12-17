@@ -35,7 +35,7 @@
     <?php echo $modal; ?>
     <div class="standard">
         <?php if (isset($display)) echo $display; ?>
-        <?php echo $navigation; ?>
+        <?php if (isset($navigation)) echo $navigation; ?>
         <?php echo $section; ?>
     </div>
 </body>
