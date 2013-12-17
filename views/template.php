@@ -30,6 +30,7 @@
     <?php echo Asset::js('knockout-sortable.min.js'); ?>
     <?php echo Asset::js('helper.js'); ?>
     <?php echo Asset::js('template.js'); ?>
+    <?php echo Asset::js('modal.js'); ?>
 </head>
 <body>
     <?php echo $modal; ?>
