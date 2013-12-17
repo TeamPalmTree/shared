@@ -4,7 +4,6 @@
 
 @import "datetimepicker.less";
 @import "item.less";
-@import "navigation.less";
 @import "network.less";
 @import "section.less";
 @import "typeahead.less";
@@ -58,7 +57,7 @@
   &:active,
   &.active {
     color: @text-color;
-    background-color: @standard-bg;
+    background-color: @standard-button-bg-active;
   }
 }
 
@@ -71,7 +70,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .table tbody tr {
   &.selected > td {
-    background-color: @standard-bg-dark;
+    background-color: @standard-table-bg-active;
   }
 }
 

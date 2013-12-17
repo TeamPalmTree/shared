@@ -2,13 +2,13 @@
   cursor: default;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid @standard-bg-dark;
+  border-bottom: 1px solid @standard-item-bg;
   padding-bottom: @padding-base-vertical;
   padding-top: @padding-base-vertical;
 }
 
 .standard-item.selected {
-  background-color: @standard-bg-dark;
+  background-color: @standard-item-bg;
 }
 
 .standard-item-checkbox {
@@ -79,14 +79,14 @@
 }
 
 .standard-item-form > input.active {
-  background-color: @standard-accent-light;
+  background-color: @standard-item-input-active;
 }
 
 .standard-item-time {
   color: @text-color;
   display: block;
   width: 160px;
-  background-color: @standard-bg-dark;
+  background-color: @standard-item-bg;
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 6px;
@@ -118,24 +118,8 @@
   margin-right: @padding-base-vertical;
 }
 
-.standard-item-section-dimmed {
-  color: @standard-bg-light;
-}
-
-.standard-item-section-success {
-  color: @brand-success;
-}
-
-.standard-item-section-warning {
-  color: @brand-warning;
-}
-
-.standard-item-section-important {
-  color: @brand-danger;
-}
-
 .standard-sidebar-item {
-  border-bottom: 1px solid @standard-bg-light;
+  border-bottom: 1px solid @standard-sidebar-item-border;
   padding-right: @padding-base-vertical;
   padding-left: @padding-base-vertical;
   padding-top: @padding-base-vertical;
@@ -143,7 +127,7 @@
 }
 
 .standard-sidebar-item.active {
-  background-color: @standard-accent-light;
+  background-color: @standard-sidebar-item-active;
 }
 
 .standard-sidebar-item-title {
