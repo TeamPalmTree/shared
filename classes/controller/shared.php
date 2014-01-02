@@ -1,17 +1,16 @@
 <?php
 
-class Controller_Base extends Controller_Hybrid
+class Controller_Shared extends Controller_Auth
 {
-    public $section;
 
     public function before()
     {
         // call parent before required
         parent::before();
 
-        //////////////////////////////
-        // SET TIMEZONE INFORMATION //
-        //////////////////////////////
+        ///////////////////
+        // SET UP HELPER //
+        ///////////////////
 
         // set global timezones
         Helper::$server_timezone = new DateTimeZone(Config::get('default_timezone'));

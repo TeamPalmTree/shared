@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Standard extends Controller_Base
+class Controller_Standard extends Controller_Shared
 {
 
     public $site = 'TPT';

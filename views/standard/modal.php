@@ -9,14 +9,8 @@
                 <!-- ko if: type() == 'html' -->
                 <span data-bind="html: text"></span>
                 <!-- /ko -->
-                <!-- ko if: type() == 'input' -->
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" data-bind="text: text"></label>
-                        <div class="col-sm-9">
-                            <input class="form-control" data-bind="nowValue: value, event: { keypress: keypress }, attr: { placeholder: placeholder }" />
-                        </div>
-                    </div>
+                <!-- ko if: type() == 'template' -->
+                <div data-bind="template: { name: template, data: object }">
                 </div>
                 <!-- /ko -->
             </div>
@@ -24,7 +18,7 @@
                 <!-- ko if: type() == 'text' -->
                 <button class="btn btn-primary" data-bind="text: ok_text, click: ok"></button>
                 <!-- /ko -->
-                <!-- ko if: type() == 'input' -->
+                <!-- ko if: type() != 'text' -->
                 <button class="btn" data-bind="text: cancel_text, click: cancel"></button>
                 <button class="btn btn-primary" data-bind="text: ok_text, click: ok"></button>
                 <!-- /ko -->
