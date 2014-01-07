@@ -6,11 +6,11 @@ class Controller_Standard extends Controller_Shared
     public $site = 'Standard';
     public $section = 'Index';
 
-    public function router($method, $params)
+    public function before()
     {
 
-        // call parent before required
-        parent::router($method, $params);
+        // call parent first
+        parent::before();
         // set up standard template
         if (is_object($this->template))
         {
