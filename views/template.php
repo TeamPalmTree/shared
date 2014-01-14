@@ -28,6 +28,7 @@
     <?php echo Asset::js('jquery-ui.min.js'); ?>
     <?php echo Asset::js('jquery.tablesorter.min.js'); ?>
     <?php echo Asset::js('knockout-sortable.min.js'); ?>
+    <?php echo Asset::js('ckeditor/ckeditor.js'); ?>
     <?php echo Asset::js('helper.js'); ?>
     <?php echo Asset::js('template.js'); ?>
     <?php echo Asset::js('modal.js'); ?>
