@@ -14,5 +14,4 @@ Autoloader::add_classes(array(
     'Helper'   => __DIR__.'/classes/helper.php',
     'MixingWheel'   => __DIR__.'/classes/mixingwheel.php',
     'Validation'   => __DIR__.'/classes/validation.php',
-    'HttpAccessDeniedException'   => __DIR__.'/classes/exceptions.php',
 ));
