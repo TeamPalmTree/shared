@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header" data-bind="text: title"></div>
             <div class="modal-body">
-                <!-- ko if: type() == 'text' -->
+                <!-- ko if: (type() == 'text') || (type() == 'action') -->
                 <span data-bind="text: text"></span>
                 <!-- /ko -->
                 <!-- ko if: type() == 'html' -->
