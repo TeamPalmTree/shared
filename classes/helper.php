@@ -396,4 +396,9 @@ class Helper {
         return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
     }
 
+    public static function remove_fakepath($file)
+    {
+        return str_replace("C:\\fakepath\\", '', $file);
+    }
+
 }

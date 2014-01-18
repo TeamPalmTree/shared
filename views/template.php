@@ -20,6 +20,8 @@
     <?php echo Asset::js('bootstrap.min.js'); ?>
     <?php echo Asset::js('bootstrap-datetimepicker.min.js'); ?>
     <?php echo Asset::js('typeahead.min.js'); ?>
+    <?php echo Asset::js('ckeditor/ckeditor.js'); ?>
+    <?php echo Asset::js('ckeditor/adapters/jquery.js'); ?>
     <?php echo Asset::js('knockout.min.js'); ?>
     <?php echo Asset::js('knockout.mapping.min.js'); ?>
     <?php echo Asset::js('knockout.bindingHandlers.js'); ?>
@@ -28,7 +30,6 @@
     <?php echo Asset::js('jquery-ui.min.js'); ?>
     <?php echo Asset::js('jquery.tablesorter.min.js'); ?>
     <?php echo Asset::js('knockout-sortable.min.js'); ?>
-    <?php echo Asset::js('ckeditor/ckeditor.js'); ?>
     <?php echo Asset::js('helper.js'); ?>
     <?php echo Asset::js('template.js'); ?>
     <?php echo Asset::js('modal.js'); ?>
