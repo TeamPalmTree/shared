@@ -5,7 +5,7 @@ class Helper {
     public static $server_timezone;
     public static $user_timezone;
     public static $server_pattern = 'Y-m-d H:i:s';
-    public static $user_pattern = 'Y-m-d g:iA';
+    public static $user_pattern = 'Y-m-d H:i';
     public static $timeday_pattern = 'H:i D';
     public static $DST_pattern = 'I';
 
