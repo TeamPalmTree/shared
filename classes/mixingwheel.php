@@ -92,13 +92,11 @@ class MixingWheel {
             return $str;
         }
 
-        // get all valid sharp flats
-        $sharp_flats = array_keys(self::$sharp_flat_keys);
-        // see if it is a sharp flat instead
-        if (array_search($str, $sharp_flats) === false)
-            return null;
-        // success
-        return $sharp_flats[$str];
+        // see if it is a sharp flats instead
+        if (array_key_exists($str, self::$sharp_flat_keys))
+            return self::$sharp_flat_keys[$str];
+        // fail
+        return null;
 
     }
 
