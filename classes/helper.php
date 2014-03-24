@@ -1,5 +1,7 @@
 <?php
 
+namespace Shared;
+
 class Helper {
 
     public static $server_timezone;
@@ -20,15 +22,15 @@ class Helper {
     public static function server_datetime($server_datetime_string = null)
     {
         if ($server_datetime_string == null)
-            return new DateTime('now', self::$server_timezone);
-        return DateTime::createFromFormat(self::$server_pattern, $server_datetime_string, self::$server_timezone);
+            return new \DateTime('now', self::$server_timezone);
+        return \DateTime::createFromFormat(self::$server_pattern, $server_datetime_string, self::$server_timezone);
     }
 
     public static function server_datetime_string($server_datetime = null)
     {
 
         if ($server_datetime == null)
-            $server_datetime = new DateTime('now', self::$server_timezone);
+            $server_datetime = new \DateTime('now', self::$server_timezone);
         $server_datetime_string = $server_datetime->format(self::$server_pattern);
         return $server_datetime_string;
 
@@ -40,12 +42,12 @@ class Helper {
         // return current date time
         if ($user_datetime_string == null)
         {
-            $server_datetime = new DateTime('now', self::$server_timezone);
+            $server_datetime = new \DateTime('now', self::$server_timezone);
             return $server_datetime->format(self::$server_pattern);
         }
 
         // create from user string
-        $user_datetime = DateTime::createFromFormat(self::$user_pattern, $user_datetime_string, self::$user_timezone);
+        $user_datetime = \DateTime::createFromFormat(self::$user_pattern, $user_datetime_string, self::$user_timezone);
         $user_datetime->setTimezone(self::$server_timezone);
         $server_datetime_string = $user_datetime->format(self::$server_pattern);
         return $server_datetime_string;
@@ -56,7 +58,7 @@ class Helper {
     {
         if ($server_datetime_string == null)
             return null;
-        $server_datetime = DateTime::createFromFormat(self::$server_pattern, $server_datetime_string, self::$server_timezone);
+        $server_datetime = \DateTime::createFromFormat(self::$server_pattern, $server_datetime_string, self::$server_timezone);
         $server_datetime->setTimezone(self::$user_timezone);
         $user_datetime_string = $server_datetime->format(self::$user_pattern);
         return $user_datetime_string;
@@ -66,7 +68,7 @@ class Helper {
     {
         if ($timestamp == null)
             return null;
-        $server_datetime = new DateTime();
+        $server_datetime = new \DateTime();
         $server_datetime->setTimestamp($timestamp);
         $server_datetime->setTimezone(self::$user_timezone);
         $user_datetime_string = $server_datetime->format(self::$user_pattern);
@@ -111,7 +113,7 @@ class Helper {
     {
         if ($server_datetime_string == null)
             return null;
-        $server_datetime = DateTime::createFromFormat(self::$server_pattern, $server_datetime_string, self::$server_timezone);
+        $server_datetime = \DateTime::createFromFormat(self::$server_pattern, $server_datetime_string, self::$server_timezone);
         $server_datetime->setTimezone(self::$user_timezone);
         $client_datetime_string = $server_datetime->format(self::$server_pattern);
         return $client_datetime_string;

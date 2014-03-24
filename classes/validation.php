@@ -1,5 +1,7 @@
 <?php
 
+namespace Shared;
+
 class Validation extends \Fuel\Core\Validation {
 
     protected static $days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
