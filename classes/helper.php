@@ -75,22 +75,24 @@ class Helper {
         return $user_datetime_string;
     }
 
-    public static function DST_hours_offset($datetime, $server_datetime)
+    public static function DST_hours_offset($datetime_A, $datetime_B)
     {
-        $user_datetime = clone $datetime;
-        // convert datetime to user time
-        $user_datetime->setTimezone(self::$user_timezone);
+        $datetime_A = clone $datetime_A;
+        $datetime_B = clone $datetime_B;
+        // convert datetime to user timezone
+        $datetime_A->setTimezone(self::$user_timezone);
+        $datetime_B->setTimezone(self::$user_timezone);
         // get user/server dst
-        $user_DST = (int)$user_datetime->format(self::$DST_pattern);
-        $server_DST = (int)$server_datetime->format(self::$DST_pattern);
+        $datetime_A_DST = (int)$datetime_A->format(self::$DST_pattern);
+        $datetime_B_DST = (int)$datetime_B->format(self::$DST_pattern);
         // if same DST, no offset
-        if ($user_DST == $server_DST)
+        if ($datetime_A_DST == $datetime_B_DST)
             return 0;
         // if currently DST, user non-DST
-        if ($server_DST > $user_DST)
+        if ($datetime_B_DST > $datetime_A_DST)
             return -1;
         // if current non-DST, user DST
-        if ($server_DST < $user_DST)
+        if ($datetime_B_DST < $datetime_A_DST)
             return 1;
     }
 
