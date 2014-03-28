@@ -3,8 +3,8 @@
 <?php if (isset($footer)) echo $footer; ?>
 <script type="text/javascript">
     $(function() {
-        // add component
-        window.standard.add_component('<?php echo $viewmodel_id; ?>', '<?php echo $viewmodel_name; ?>');
+        // initialize component
+        window.standard.initialize_component('<?php echo $viewmodel_id; ?>', '<?php echo $viewmodel_name; ?>');
     });
 </script>
 <?php if ($only): ?>
