@@ -17,6 +17,6 @@ Autoloader::add_classes(array(
     'Controller_Standard'   => __DIR__.'/classes/controller/standard.php',
     'Shared\\Helper'   => __DIR__.'/classes/helper.php',
     'Shared\\Validation'   => __DIR__.'/classes/validation.php',
-    'Standard\\Model\\Model_Site'   => __DIR__.'/classes/models/site.php',
-    'Standard\\Model\\Model_Section'   => __DIR__.'/classes/models/section.php',
+    'Standard\\Model\\Model_Document'   => __DIR__.'/classes/models/document.php',
+    'Standard\\Model\\Model_Body'   => __DIR__.'/classes/models/body.php',
 ));

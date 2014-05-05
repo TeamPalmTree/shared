@@ -3,8 +3,8 @@
 class Controller_Standard extends Controller_Shared
 {
 
-    protected $site;
-    protected $section;
+    protected $document;
+    protected $body;
 
     public function before()
     {
@@ -13,13 +13,13 @@ class Controller_Standard extends Controller_Shared
         parent::before();
 
         // see if our site and section are set
-        if (!isset($this->site))
-            $this->site = new \Standard\Model\Model_Site();
-        if (!isset($this->section))
-            $this->section = new \Standard\Model\Model_Section();
+        if (!isset($this->document))
+            $this->document = new \Standard\Model\Model_Document();
+        if (!isset($this->body))
+            $this->body = new \Standard\Model\Model_Body();
 
-        // set section only flag
-        if ($this->section->only = Input::get('section_only', false))
+        // set page only flag
+        if ($this->body->only = Input::get('body', false))
         {
             // set the template if it wasn't already set (as this will likely be an AJAX request)
             if (!is_object($this->template))
@@ -30,9 +30,8 @@ class Controller_Standard extends Controller_Shared
         if (!is_object($this->template))
             return;
 
-        // set up modal and section views
-        $this->template->modal = View::forge('standard/modal');
-        $this->template->section = View::forge('standard/section');
+        // set up page
+        $this->template->body = View::forge('standard/body');
 
     }
 
@@ -46,28 +45,25 @@ class Controller_Standard extends Controller_Shared
             // see if we have the section viewmodel name set
             if (!isset($this->section->viewmodel_name))
             {
-                // get body file
-                $body_file = $this->template->section->body->file();
+                // get content file
+                $content_file = $this->template->body->content->file();
                 // get body file parts
-                $body_file_parts = explode('/', $body_file);
+                $content_file_parts = explode('/', $content_file);
                 // create model
-                foreach ($body_file_parts as &$body_file_part)
-                    $body_file_part = ucfirst($body_file_part);
-                // get the section viewmodel name
-                $this->section->viewmodel_name =  implode('_', $body_file_parts) . '_Model';
-                // get the section viewmodel id
-                if (!isset($this->section->viewmodel_id))
-                    $this->section->viewmodel_id = str_replace('/', '-', $body_file);
+                foreach ($content_file_parts as &$content_file_part)
+                    $content_file_part = ucfirst($content_file_part);
+                // get the page section viewmodel name
+                $this->body->section_model_name =  implode('_', $content_file_parts) . '_Model';
             }
 
             // set template data
-            $this->template->set(get_object_vars($this->site));
+            $this->template->set(get_object_vars($this->document));
             // set section data
-            $this->template->section->set(get_object_vars($this->section));
+            $this->template->body->set(get_object_vars($this->body));
 
-            // if we are in section only mode, response becomes section
-            if ($this->section->only)
-                $response = \Fuel\Core\Response::forge($this->template->section);
+            // if we are in page only mode, response becomes section
+            if ($this->body->only)
+                $response = \Fuel\Core\Response::forge($this->template->body);
 
         }
 

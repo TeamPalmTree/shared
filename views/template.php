@@ -10,7 +10,7 @@
             <?php if (!isset($title)): ?>
                 <?php echo $title; ?>
             <?php else: ?>
-                <?php echo $name . ' : ' . $section->name; ?>
+                <?php echo $name . ' : ' . $body->name; ?>
             <?php endif; ?>
         </title>
 
@@ -60,13 +60,6 @@
 
     </head>
     <body>
-        <?php echo $modal; ?>
-        <div class="standard">
-            <?php if (isset($display)) echo $display; ?>
-            <?php if (isset($navigation)) echo $navigation; ?>
-            <div class="standard-section">
-                <?php echo $section; ?>
-            </div>
-        </div>
+        <?php echo $body; ?>
     </body>
 </html>

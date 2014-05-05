@@ -2,7 +2,7 @@
 
 namespace Standard\Model;
 
-class Model_Site extends \Model
+class Model_Document extends \Model
 {
 
     public $name = 'Standard';
