@@ -4,7 +4,6 @@ class Controller_Standard extends Controller_Shared
 {
 
     protected $document;
-    protected $body;
 
     public function before()
     {
@@ -15,11 +14,9 @@ class Controller_Standard extends Controller_Shared
         // see if our site and section are set
         if (!isset($this->document))
             $this->document = new \Standard\Model\Model_Document();
-        if (!isset($this->body))
-            $this->body = new \Standard\Model\Model_Body();
 
-        // set page only flag
-        if ($this->body->only = Input::get('body', false))
+        // set body only flag
+        if ($this->document->body_only = Input::get('body', false))
         {
             // set the template if it wasn't already set (as this will likely be an AJAX request)
             if (!is_object($this->template))
@@ -30,7 +27,9 @@ class Controller_Standard extends Controller_Shared
         if (!is_object($this->template))
             return;
 
-        // set up page
+        // set up head
+        $this->template->head = View::forge('standard/head');
+        // set up body
         $this->template->body = View::forge('standard/body');
 
     }
@@ -43,7 +42,7 @@ class Controller_Standard extends Controller_Shared
         {
 
             // see if we have the section viewmodel name set
-            if (!isset($this->section->viewmodel_name))
+            if (!isset($this->document->section_model))
             {
                 // get content file
                 $content_file = $this->template->body->content->file();
@@ -53,16 +52,14 @@ class Controller_Standard extends Controller_Shared
                 foreach ($content_file_parts as &$content_file_part)
                     $content_file_part = ucfirst($content_file_part);
                 // get the page section viewmodel name
-                $this->body->section_model_name =  implode('_', $content_file_parts) . '_Model';
+                $this->document->section_model =  implode('_', $content_file_parts) . '_Model';
             }
 
-            // set template data
-            $this->template->set(get_object_vars($this->document));
-            // set section data
-            $this->template->body->set(get_object_vars($this->body));
+            // set global view data
+            $this->template->set_global(get_object_vars($this->document));
 
             // if we are in page only mode, response becomes section
-            if ($this->body->only)
+            if ($this->document->body_only)
                 $response = \Fuel\Core\Response::forge($this->template->body);
 
         }
