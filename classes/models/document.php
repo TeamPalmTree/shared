@@ -18,6 +18,5 @@ class Model_Document extends \Model
     public $page_only = false;
 
     public $section_name = 'Index';
-    public $section_model = null;
 
 }

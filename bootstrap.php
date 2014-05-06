@@ -12,7 +12,6 @@ Autoloader::add_core_namespace('Standard');
 Autoloader::add_core_namespace('Shared');
 
 Autoloader::add_classes(array(
-    'View'   => __DIR__.'/classes/view.php',
     'Controller_Shared'   => __DIR__.'/classes/controller/shared.php',
     'Controller_Standard'   => __DIR__.'/classes/controller/standard.php',
     'Shared\\Helper'   => __DIR__.'/classes/helper.php',

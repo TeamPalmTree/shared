@@ -40,28 +40,11 @@ class Controller_Standard extends Controller_Shared
         // perform template post processing
         if (is_object($this->template))
         {
-
-            // see if we have the section viewmodel name set
-            if (!isset($this->document->section_model))
-            {
-                // get content file
-                $content_file = $this->template->body->content->file();
-                // get body file parts
-                $content_file_parts = explode('/', $content_file);
-                // create model
-                foreach ($content_file_parts as &$content_file_part)
-                    $content_file_part = ucfirst($content_file_part);
-                // get the page section viewmodel name
-                $this->document->section_model =  implode('_', $content_file_parts) . '_Model';
-            }
-
             // set global view data
             $this->template->set_global(get_object_vars($this->document));
-
             // if we are in page only mode, response becomes section
             if ($this->document->body_only)
                 $response = \Fuel\Core\Response::forge($this->template->body);
-
         }
 
         // return standard
