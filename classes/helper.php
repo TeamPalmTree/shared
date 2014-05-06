@@ -151,7 +151,7 @@ class Helper {
             . (($duration_hours != '') ? $duration_hours . 'H' : '')
             . (($duration_minutes != '') ? $duration_minutes . 'M' : '')
             . (($duration_seconds != '') ? $duration_seconds . 'S' : '');
-        $new_datetime->add(new DateInterval($dateinterval_string));
+        $new_datetime->add(new \DateInterval($dateinterval_string));
         return $new_datetime;
 
     }
@@ -159,7 +159,7 @@ class Helper {
     public static function datetime_add_seconds($datetime, $seconds)
     {
         $new_datetime = clone $datetime;
-        $datetinerval = new DateInterval('PT' . $seconds . 'S');
+        $datetinerval = new \DateInterval('PT' . $seconds . 'S');
         $new_datetime->add($datetinerval);
         return $new_datetime;
 
@@ -176,7 +176,7 @@ class Helper {
             . (($duration_hours != '') ? $duration_hours . 'H' : '')
             . (($duration_minutes != '') ? $duration_minutes . 'M' : '')
             . (($duration_seconds != '') ? $duration_seconds . 'S' : '');
-        return new DateInterval($dateinterval_string);
+        return new \DateInterval($dateinterval_string);
 
     }
 
